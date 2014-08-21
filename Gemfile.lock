@@ -34,6 +34,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
+    awesome_print (1.2.0)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -287,6 +288,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   annotate
+  awesome_print
   better_errors
   bootstrap-multiselect-rails (= 0.0.4)
   bootstrap-sass (~> 3.0.2.1)

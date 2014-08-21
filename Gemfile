@@ -39,7 +39,6 @@ group :development do
   gem 'foreman'
   gem 'launchy'
   gem 'pry'
-  gem 'pry-rails'
   gem 'quiet_assets'
   gem 'thin'
   gem 'rack-mini-profiler'
@@ -60,4 +59,6 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'timecop'
+  gem 'pry-rails'
+  gem 'awesome_print'
 end
