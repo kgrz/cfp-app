@@ -92,4 +92,11 @@ CFPApp::Application.configure do
   }
 
   config.exceptions_app = self.routes
+
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: '[CFP-APP Exception]',
+      sender_address: %{'cfp@gardencityruby.org'},
+      exception_recipients: %{team@gardencityruby.org}
+    }
 end

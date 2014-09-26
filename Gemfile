@@ -31,6 +31,7 @@ gem 'zeroclipboard-rails'
 group :production do
   gem 'rails_12factor'
   gem 'unicorn'
+  gem 'exception_notification'
 end
 
 group :development do
