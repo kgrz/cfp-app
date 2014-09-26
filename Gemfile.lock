@@ -175,6 +175,11 @@ GEM
     omniauth-twitter (1.0.1)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
+    opbeat (0.9.1)
+      faraday (>= 0.8, < 0.10)
+      hashie (~> 2.1.1)
+      multi_json (~> 1.0)
+      uuidtools (~> 2.1.4)
     pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.0)
@@ -280,6 +285,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
     zeroclipboard-rails (0.1.0)
@@ -319,6 +325,7 @@ DEPENDENCIES
   launchy
   omniauth-github
   omniauth-twitter
+  opbeat
   pg
   pry
   pry-rails
