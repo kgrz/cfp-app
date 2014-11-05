@@ -158,6 +158,14 @@ class Proposal < ActiveRecord::Base
     ratings.present? || has_reviewer_comments?
   end
 
+  def next_proposal?
+    Proposal.where('id > ?', id).count > 0
+  end
+
+  def next_proposal
+    Proposal.where('id > ?', id).first
+  end
+
   private
 
   def save_tags
