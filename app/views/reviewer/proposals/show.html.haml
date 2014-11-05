@@ -7,9 +7,9 @@
         .clearfix
           =link_to(reviewer_event_proposals_path, class: "btn btn-primary") do
             &laquo; Return to Proposals
-          =link_to_if(proposal.next_proposal?, 'Next Proposal', proposal_path(proposal.next_proposal), class: "btn btn-primary") do
+          =link_to_if(proposal.next_proposal?, 'Next Proposal', reviewer_event_proposal_path(proposal.next_proposal), class: "btn btn-primary") do
             &nbsp;
-          =link_to_if(proposal.previous_proposal?, 'Previous Proposal', proposal_path(proposal.previous_proposal), class: "btn btn-primary") do
+          =link_to_if(proposal.previous_proposal?, 'Previous Proposal', reviewer_event_proposal_path(proposal.previous_proposal), class: "btn btn-primary") do
             &nbsp;
 
   .row
