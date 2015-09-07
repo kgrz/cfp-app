@@ -18,7 +18,7 @@
       = javascript_include_tag "/js/html5shiv.js"
       = javascript_include_tag "/js/respond.min.js"
   %body
-    .navbar.navbar-inverse.navbar-fixed-top
+    .navbar.navbar-fixed-top
       .container
         .navbar-header
           %button.navbar-toggle{ type: "button", data: { toggle: "collapse", target: ".navbar-collapse" } }
@@ -107,5 +107,5 @@
 
   #flash= show_flash
 
-  .container
+  .container.fixed-nav-padding
     =yield
