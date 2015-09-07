@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.2.0'
 
 gem 'rails', '4.1.2'
 gem 'puma', '~> 2.13'
@@ -13,7 +13,7 @@ gem 'jquery-datatables-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'sass-rails', '~> 4.0.1'
 gem 'haml', '~> 4.0.4'
-gem 'bootstrap-sass', '~> 3.0.2.1'
+gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'omniauth-github'
 gem 'omniauth-twitter'
