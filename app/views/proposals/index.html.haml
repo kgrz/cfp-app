@@ -1,11 +1,11 @@
-.row
-  .text-center.col-xs-12
-    %h1 Proposals
+- content_for :header do
+  Proposals
+
 .row
   .proposals.col-xs-12
     - if proposals.empty?
       .text-center
-        %h4 You don't have any proposals. Create one now.
+        %p You don't have any proposals
     - else
       - proposals.each do |event, talks|
         %h4
