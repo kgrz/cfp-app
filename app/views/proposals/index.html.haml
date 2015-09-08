@@ -2,18 +2,20 @@
   .text-center.col-xs-12
     %h1 Proposals
 .row
-  .proposals.text-center.col-xs-12
+  .proposals.col-xs-12
     - if proposals.empty?
-      %h4 You don't have any proposals. Create one now.
-    - proposals.each do |event, talks|
-      %h4
-        = link_to event.name, event_path(event.slug)
-        %small= event.state
-        - if event.open?
-          = link_to 'Submit a proposal', new_proposal_path(slug: event.slug), class: 'btn btn-primary pull-right'
-      %ul
-        - talks.each do |proposal|
-          %li.proposal
-            = proposal.public_state(small: true)
-            = link_to proposal.title, proposal_path(slug: proposal.event.slug, uuid: proposal)
-            %p= truncate(proposal.abstract, length: 80)
+      .text-center
+        %h4 You don't have any proposals. Create one now.
+    - else
+      - proposals.each do |event, talks|
+        %h4
+          = link_to event.name, event_path(event.slug)
+          %small= event.state
+          - if event.open?
+            = link_to 'Submit a proposal', new_proposal_path(slug: event.slug), class: 'btn btn-primary pull-right'
+        %ul
+          - talks.each do |proposal|
+            %li.proposal
+              = proposal.public_state(small: true)
+              = link_to proposal.title, proposal_path(slug: proposal.event.slug, uuid: proposal)
+              %p= truncate(proposal.abstract, length: 80)
