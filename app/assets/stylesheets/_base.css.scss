@@ -1,20 +1,15 @@
 body {
-  font-size: 100%;
+  font-size: 150%;
   font-family: "Source Sans Pro";
 }
 
 .navbar {
-  font-size: 1.5rem;
   border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
   background: rgba(255,255,255,0.97);
   box-shadow: 0 0 1px rgba(0,0,0,0.15);
   will-change: transform;
   transform: translateZ(0);
 
-}
-
-p {
-  font-size: 1.5rem;
 }
 
 .alert {
@@ -33,6 +28,7 @@ p {
   margin: 1em 0 5em;
   padding-top: 1em;
 }
+
 .help-block {
   font-size: 0.9rem;
 }
