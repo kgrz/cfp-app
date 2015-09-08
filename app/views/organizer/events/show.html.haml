@@ -1,48 +1,69 @@
+.row
+  .col-xs-12
+    .heading.text-center
+      %h2 Event Details
+
 .event
-  .row
-    %header
-      .col-sm-3
-        %h2= event
-      .col-sm-5.col-sm-offset-4
-        #event-actions-top.pull-right
-          = link_to "Proposals", organizer_event_proposals_path(event), class: "btn btn-default"
-          = link_to "Program", organizer_event_program_path(event), class: "btn btn-default"
-          = link_to "Schedule", organizer_event_sessions_path(event), class: "btn btn-default"
-          = link_to "Edit Event", edit_organizer_event_path(event), class: "btn btn-primary"
-  .row
-    .col-sm-4
-      %h4 Event Details
-      %dl.dl-horizontal
-        %dt Url:
-        %dd
-          %a{ href: event.url }#{event.url}
-        %dt Slug:
-        %dd #{event.slug}
-        %dt Email:
-        %dd #{event.contact_email}
-        %dt Guidelines:
-        %dd
-          -if event.guidelines.present?
+  .event-links.text-center
+    .row
+      .col-sm-2
+      .col-sm-2.col-xs-12
+        = link_to "Proposals", organizer_event_proposals_path(event)
+      .col-sm-2.col-xs-12
+        = link_to "Program", organizer_event_program_path(event)
+      .col-sm-2.col-xs-12
+        = link_to "Schedule", organizer_event_sessions_path(event)
+      .col-sm-2.col-xs-12
+        = link_to "Edit Event", edit_organizer_event_path(event)
+      .col-sm-2
+
+  .event-basic-details
+    %h4
+      %strong Basic Details
+    %table.table
+      %tr
+        %td Url
+        %td
+          %a{ href: event.url } #{event.url}
+      %tr
+        %td Slug
+        %td= event.slug
+      %tr
+        %td Email
+        %td= event.contact_email
+
+      %tr
+        %td Guidelines
+        %td
+          - if event.guidelines.present?
             = event.guidelines.truncate(150, separator: /\s/)
-          = link_to "Public guidelines", event_path(slug: event.slug)
-          %p= link_to "Edit Guidelines", edit_organizer_event_path(:form => "guidelines_form"), class: "btn btn-primary"
-      %dl.dl-horizontal
-        %dt CFP Opens:
-        %dd= event.cfp_opens
+          .row
+            .col-xs-12.col-sm-4.col-md-3
+              = link_to "Public guidelines", event_path(slug: event.slug)
+            .col-xs-12.col-sm-4.col-md-3
+              = link_to "Edit Guidelines", edit_organizer_event_path(:form => "guidelines_form")
 
-        %dt CFP Closes:
-        %dd= event.cfp_closes
 
-        .subset
-          %dt Days Remaining:
-          %dd #{event.cfp_days_remaining}
+  .event-dates
+    %h4
+      %strong Dates
+    %table.table
+      %tr
+        %td CFP Opens on
+        %td= event.cfp_opens
+      %tr
+        %td CFP Closes on
+        %td
+          = event.cfp_closes
+          %p.help-block #{event.cfp_days_remaining} days remaining
 
-        %dt Event Start:
-        %dd #{event.start_date.to_s(:month_day_year) unless event.start_date.blank?}
+      %tr
+        %td Event Start date
+        %td= event.start_date.to_s(:month_day_year) unless event.start_date.blank?
 
-        %dt Event End:
-        %dd #{event.end_date.to_s(:month_day_year) unless event.end_date.blank?}
-
+      %tr
+        %td Event End date
+        %td= event.end_date.to_s(:month_day_year) unless event.end_date.blank?
 
     .col-sm-4
       %h4 Proposal Stats
