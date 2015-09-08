@@ -1,3 +1,6 @@
-%h1 Create a new event
-= form_for event, url: admin_events_path, html: {role: 'form'} do |f|
-  = render partial: 'form', locals: {f: f}
+.row
+  .text-center
+    %h2.heading Create a new event
+.row
+  = form_for event, url: admin_events_path, html: {role: 'form', class: 'form'} do |f|
+    = render partial: 'form', locals: {f: f}
