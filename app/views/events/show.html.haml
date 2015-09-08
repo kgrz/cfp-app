@@ -1,32 +1,37 @@
 .row
-  .col-md-11
-    %h1
-      = event
-      %small= event.status
-  .col-md-1
-    .share.pull-right= event.tweet_button
-  .col-md-8
-    - if event.past_open? || event.open?
-      .markdown
-        = markdown(event.guidelines)
-    - elsif event.closes_at?
-      %p
-        Closed at
-        %strong= event.closes_at(:long_with_zone)
-  .col-md-4
+  .col-xs-12.text-center
+    %h1= event
+  .col-xs-12.text-center
+    %small Event Status: #{event.status}
+
+.row
+  .col-xs-12.text-center
+    .row
+      .col-xs-12
+        - if event.open?
+          - if event.closes_at?
+            %p
+              Closes at
+              %strong= event.closes_at(:long_with_zone)
+            %p
+              %strong
+                = time_ago_in_words(event.closes_at)
+                left to submit your proposal!
+        - else
+          %p
+            Closed at
+            %strong= event.closes_at(:long_with_zone)
+
+  .col-md-12.text-center
     - if event.open?
-      %p= link_to 'Submit a proposal', new_proposal_path(slug: event.slug), class: 'btn btn-primary'
-      - if event.closes_at?
-        %p
-          Closes at
-          %strong= event.closes_at(:long_with_zone)
-        %p
-          %strong
-            = time_ago_in_words(event.closes_at)
-            left
-          to submit your proposal!
+      %p= link_to 'Submit a proposal', new_proposal_path(slug: event.slug), class: 'btn btn-primary btn-lg'
     - if event.proposals.count > 5
       .stats
         %h2 CFP Stats
         = pluralize(event.proposals.count, 'proposal')
         = event.line_chart
+
+- if event.past_open? || event.open?
+  .row
+    .markdown.col-xs-12.col-sm-10.col-sm-offset-1
+      = markdown(event.guidelines)
