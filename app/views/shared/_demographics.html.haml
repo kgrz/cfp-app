@@ -1,10 +1,10 @@
 .form-group.form-group-lg
-  = f.label demographic_label(:gender)
+  = f.label demographic_label(:gender), demographic_label(:gender), class: 'control-label'
   = f.text_field :gender, class: 'form-control', placeholder: 'Your gender identity'
 .form-group.form-group-lg
-  = f.label demographic_label(:ethnicity)
+  = f.label demographic_label(:ethnicity), demographic_label(:ethnicity), class: 'control-label'
   = f.text_field :ethnicity, class: 'form-control', placeholder: 'Your ethnicity'
 - Person::DEMOGRAPHIC_TYPES.each do |type, value|
   .form-group.form-group-lg
-    = f.label demographic_label(type)
+    = f.label demographic_label(type), demographic_label(type), class: 'control-label'
     = f.select type, value, { include_blank: true }, { class: 'form-control' }
