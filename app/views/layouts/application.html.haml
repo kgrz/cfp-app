@@ -18,7 +18,7 @@
       = javascript_include_tag "/js/html5shiv.js"
       = javascript_include_tag "/js/respond.min.js"
   %body
-    .navbar.navbar-fixed-top
+    .navbar
       .container
         .navbar-header
           %button.navbar-toggle{ type: "button", data: { toggle: "collapse", target: ".navbar-collapse" } }
@@ -100,12 +100,12 @@
               %li= link_to 'Log in', new_session_path
 
   - if on_organizer_page?
-    .alert-viewer-mode.fixed-nav-padding
+    .alert-viewer-mode
       .container
         Viewing as: 
         %strong Organizer
 
   #flash= show_flash
 
-  .container.fixed-nav-padding
+  .container
     =yield
