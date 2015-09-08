@@ -1,15 +1,19 @@
+- content_for :header do
+  Events
+
 .row
-  .text-center.col-xs-12
-    %h1 Events
-.row
-  .col-xs-12
+  .col-xs-12.col-sm-6.col-sm-offset-3
     - if events.empty?
       .text-center
-        %h4 You are not part of any event yet.
-    -else
-      - events.each do |event|
-        .event
-          %h1
-            = event
-            %small= event.status
-          = event.path_for(current_user)
+        %p You are not part of any event yet.
+    - else
+      %table.table
+        %tr
+          %th Event Name
+          %th Event Status
+          %th Proposals
+        - events.each do |event|
+          %tr
+            %td= event.name
+            %td= event.status
+            %td= event.path_for(current_user)
