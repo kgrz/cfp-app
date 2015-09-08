@@ -2,20 +2,34 @@
   Proposals
 
 .row
-  .proposals.col-xs-12
-    - if proposals.empty?
+  - if proposals.empty?
+    .col-xs-12
       .text-center
         %p You don't have any proposals
-    - else
+  - else
+    .col-xs-12.col-sm-8.col-sm-offset-2
       - proposals.each do |event, talks|
-        %h4
-          = link_to event.name, event_path(event.slug)
-          %small= event.state
-          - if event.open?
-            = link_to 'Submit a proposal', new_proposal_path(slug: event.slug), class: 'btn btn-primary pull-right'
-        %ul
-          - talks.each do |proposal|
-            %li.proposal
-              = proposal.public_state(small: true)
-              = link_to proposal.title, proposal_path(slug: proposal.event.slug, uuid: proposal)
-              %p= truncate(proposal.abstract, length: 80)
+        .row
+          .col-xs-12.text-center
+            %h3
+              = link_to event.name, event_path(event.slug)
+              %small
+                status:
+                %strong= event.state
+
+        .row
+          .col-xs-12
+            .list-group
+              - talks.each do |proposal|
+                = link_to proposal_path(slug: proposal.event.slug, uuid: proposal), class: 'list-group-item' do
+                  %h4.list-group-item-heading
+                    = proposal.title
+                    .pull-right
+                      = proposal.public_state(small: true)
+                  %p.list-group-item-text
+                    = truncate(proposal.abstract, length: 200)
+
+        - if event.open?
+          .row
+            .col-xs-12.text-center
+              = link_to 'Submit a new proposal', new_proposal_path(slug: event.slug), class: 'btn btn-primary btn-xs'
