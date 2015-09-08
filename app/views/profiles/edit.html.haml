@@ -1,6 +1,6 @@
-.row
-  .text-center.col-xs-12.heading
-    %h3 Edit Profile
+- content_for :header do
+  Edit Profile
+
 .row
   = form_for current_user, url: profile_path, html: {role: 'form'} do |f|
     .row
@@ -12,10 +12,10 @@
             This information will be
             %strong hidden
             from the review committee, but will be shown on the program if your proposal is accepted.
-        .form-group.form-group-lg
+        .form-group
           = f.label :name
           = f.text_field :name, class: 'form-control', placeholder: 'Your name'
-        .form-group.form-group-lg
+        .form-group
           = f.label :bio
           = f.text_area :bio, class: 'form-control', placeholder: 'Enter your bio in no more than 500 characters', rows: 7, maxlength: 500
       .col-md-4
@@ -24,7 +24,7 @@
             %strong Identity Services
           %p
             Email is only used for notifications on proposal feedback and acceptance into the program.
-        .form-group.form-group-lg
+        .form-group
           = f.label :email
           = f.email_field :email, class: 'form-control', placeholder: 'Your email address'
         - if Rails.env.development?
@@ -69,4 +69,4 @@
 
     .row
       .col-md-12.form-submit
-        %button.pull-right.btn.btn-success.btn-lg{:type => "submit"} Save
+        %button.pull-right.btn.btn-success{:type => "submit"} Save

@@ -108,4 +108,8 @@
   #flash= show_flash
 
   .container
-    =yield
+    %header
+      .row
+        .text-center.col-xs-12.heading
+          %h3= yield :header
+    = yield
