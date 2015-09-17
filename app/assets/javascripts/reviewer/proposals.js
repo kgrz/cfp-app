@@ -3,14 +3,27 @@ $(document).ready(function() {
   $.datepicker.regional[""].dateFormat = 'yy-mm-dd ';
   $.datepicker.setDefaults($.datepicker.regional['']);
 
-  var oTable = cfpDataTable('#reviewer-proposals.datatable', [ 'number', null,
-    'number', 'text', 'text', 'text', 'number', 'text', 'text', null ]);
+  var oTable = cfpDataTable(
+    '#reviewer-proposals.datatable',
+    [
+      'number',    // Score
+      null,        // Your Score
+      'number',    // Ratings
+      'text',      // Title
+      'text',      // Proposal Tags
+      'text',      // Reviewer Tags
+      'number',    // Comments
+      'text',      // Submitted On
+      'text',      // Updated At
+      null         // Rated?
+    ]
+  );
 
   $("#sort_reset").click(function(){
     oTable.fnSortNeutral();
   });
 
-  $('table input').addClass('form-control');
+  $('table input').addClass('form-control input-sm');
 
   $('.multiselect').multiselect({
     buttonClass: 'btn btn-default',

@@ -1,32 +1,50 @@
+- content_for :header do
+  #{event}
+
 .row
-  .col-md-11
-    %h1
-      = event
-      %small= event.status
-  .col-md-1
-    .share.pull-right= event.tweet_button
-  .col-md-8
-    - if event.past_open? || event.open?
-      .markdown
-        = markdown(event.guidelines)
-    - elsif event.closes_at?
-      %p
-        Closed at
-        %strong= event.closes_at(:long_with_zone)
-  .col-md-4
-    - if event.open?
-      %p= link_to 'Submit a proposal', new_proposal_path(slug: event.slug), class: 'btn btn-primary'
-      - if event.closes_at?
+  .col-xs-12.text-center
+    %p
+      Event Status
+      %strong
+        %span{class: ("label label-success" if event.status == "open")}
+          #{event.status}
+
+.row
+  .col-xs-12.text-center
+    .share= event.tweet_button
+
+.event-guidelines
+  .row
+    .col-xs-12.col-md-4.col-md-offset-1
+      - if event.open?
+        %p= link_to 'Submit a proposal',
+          new_proposal_path(slug: event.slug),
+          class: 'btn btn-primary btn-lg btn-block'
+        - if event.closes_at?
+          %p.text-center
+            Closes at
+            %strong= event.closes_at(:long_with_zone)
+          %p.text-center
+            %strong
+              = time_ago_in_words(event.closes_at)
+              left
+            to submit your proposal!
+      - else
+        .alert.alert-warning
+          The CFP for this event has been closed.
+      - if event.proposals.count > 5
+        .stats
+          %h4 CFP Stats
+          = event.line_chart
+          %p
+            Total Proposals:
+            %strong= event.proposals.count
+    .col-xs-12.col-md-7
+      - if event.past_open? || event.open?
+        .markdown
+          = markdown(event.guidelines)
+      - elsif event.closes_at?
         %p
-          Closes at
+          Closed at
           %strong= event.closes_at(:long_with_zone)
-        %p
-          %strong
-            = time_ago_in_words(event.closes_at)
-            left
-          to submit your proposal!
-    - if event.proposals.count > 5
-      .stats
-        %h2 CFP Stats
-        = pluralize(event.proposals.count, 'proposal')
-        = event.line_chart
+

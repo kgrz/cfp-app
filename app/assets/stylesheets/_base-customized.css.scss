@@ -34,3 +34,36 @@
 .event-links {
   margin: 0 auto 3rem;
 }
+
+.datatable-condensed th {
+  padding-right: 0px;
+}
+
+#reviewer-proposals.datatable {
+  padding-right: 0px;
+}
+
+.number_filter {
+  width: 7rem;
+}
+
+.text_filter {
+  width: 10rem;
+}
+
+.event-guidelines {
+  margin-top: 5rem;
+}
+
+
+.markdown h2 {
+  font-size: 2.3rem; /* sizeof(h4) */
+}
+
+.markdown h3 {
+  font-size: 2.3rem; /* sizeof(h4) */
+}
+
+.stats {
+  margin-top: 5rem;
+}

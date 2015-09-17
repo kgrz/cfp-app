@@ -29,7 +29,7 @@ function cfpDataTable(selector, columnTypes, opt_options) {
   $.extend(options, opt_options);
 
   return $(selector).dataTable(options).columnFilter({
-    sPlaceHolder: "head:before",
+    sPlaceHolder: "head:after",
     aoColumns: columns
   });
 }

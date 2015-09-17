@@ -1,24 +1,25 @@
+- content_for :header do
+  = event
+
+.row
+  .col-xs-12.col-sm-3.text-right
+    Unrated Proposals:
+    %strong= event.proposals.unrated.count
+  .col-xs-12.col-sm-6.text-center
+    %p.help-block
+      Hint: Hold <kbd>shift</kbd> and click sorting arrows to sort by multiple
+      columns
+  .col-xs-12.col-sm-3.text-left
+    Proposals Rated:
+    %strong= event.proposals_rated_message
+
 #reviewer-proposals-index
-  %header.row
-    .col-md-12
-      %h2= event
-  %header.row
-    .col-md-12
-      %aside#event_statistics
-        %h3 Statistics
-        %dl.dl-horizontal
-          %dt Proposals Rated:
-          %dd= event.proposals_rated_message
-          %dt Unrated Proposals:
-          %dd= event.proposals.unrated.count
   .row
-    .col-md-10
-      %small <em>Hint:</em> Hold <kbd>shift</kbd> and click sorting arrows to sort by multiple columns
     .col-md-2
       %button.btn.btn-primary.btn-sm.pull-right#sort_reset Reset Sort Order
   .row
     .col-md-12
-      %table#reviewer-proposals.datatable.table.table-striped
+      %table#reviewer-proposals.datatable.table.table-striped.table-condensed.datatable-condensed
         %thead
           %tr
             %th
