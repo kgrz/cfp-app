@@ -31,6 +31,31 @@
   font-size: 1.5rem;
 }
 
+.dropdown-menu li {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.dropdown-menu li > ul {
+  padding-left: 0;
+}
+
+.dropdown-menu ul > li {
+  width: 80%;
+  border-bottom: 1px rgba(0, 0,0,0.5) solid;
+  margin-left: 10%;
+  padding: 1.5rem 0;
+}
+
+.dropdown-menu ul > li:last-child {
+  border-bottom: none;
+  padding-bottom: 0.5rem;
+}
+
+.dropdown-menu a {
+  font-size: 1.6rem;
+}
+
 .event-links {
   margin: 0 auto 3rem;
 }
