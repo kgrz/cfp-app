@@ -68,18 +68,29 @@
   padding-right: 0px;
 }
 
-.number_filter {
-  width: 7rem;
+table {
+  font-size: 1.6rem;
 }
 
-.text_filter {
-  width: 10rem;
+#reviewer-proposals th, .proposal-list {
+  font-size: 1.4rem;
+}
+
+#sort_reset {
+  margin: 4rem auto;
+}
+
+.datatable td, th {
+  text-align: left;
+}
+
+.updated-at {
+  width: 1px;
 }
 
 .event-guidelines {
   margin-top: 5rem;
 }
-
 
 .markdown h2 {
   font-size: 2.3rem; /* sizeof(h4) */
@@ -91,4 +102,10 @@
 
 .stats {
   margin-top: 5rem;
+}
+
+.number_filter { max-width: 6rem; }
+
+table.dataTable thead > tr > th {
+  padding-right: 5px;
 }

@@ -12,10 +12,9 @@ $(document).ready(function() {
       'text',      // Title
       'text',      // Proposal Tags
       'text',      // Reviewer Tags
-      'number',    // Comments
+      null,        // Comments
       'text',      // Submitted On
       'text',      // Updated At
-      null         // Rated?
     ]
   );
 
