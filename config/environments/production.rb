@@ -79,19 +79,25 @@ CFPApp::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
-  config.action_mailer.default_options = {from: ENV['MAIL_FROM']}
+  config.action_mailer.default_options = {from: 'cfp@gardencityruby.org'}
 
   config.action_mailer.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => 'smtp.mandrillapp.com',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com',
+    :user_name      => ENV['MANDRILL_USERNAME'],
+    :password       => ENV['MANDRILL_PASSWORD'],
+    :domain         => 'gardencityruby.org',
     :enable_starttls_auto => true
   }
 
   config.exceptions_app = self.routes
-
   config.time_zone = ENV['TIMEZONE'] || "Pacific Time (US & Canada)"
+
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: '[CFP-APP Exception]',
+      sender_address: %{'cfp@gardencityruby.org'},
+      exception_recipients: %{team@gardencityruby.org}
+    }
 end

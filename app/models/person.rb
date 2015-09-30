@@ -3,7 +3,9 @@ require 'digest/md5'
 class Person < ActiveRecord::Base
   DEMOGRAPHICS      = [:gender, :ethnicity, :country]
   DEMOGRAPHIC_TYPES = {
-    country: CountrySelect::countries.select{ |k,v| k != 'us'}.values.sort.unshift("United States of America")
+    gender: ['female', 'male', 'trans*', 'bigender', 'genderqueer', 'not listed here'],
+    ethnicity: ['African American', 'Asian', 'Caucasian', 'Hispanic', 'Native American', 'Pacific Islander', 'other' ],
+    country: CountrySelect::countries.select{ |k, _| k != 'in'}.values.sort.unshift("India")
   }
 
   store_accessor :demographics, :gender
@@ -13,7 +15,7 @@ class Person < ActiveRecord::Base
   has_many :invitations,  dependent: :destroy
   has_many :services,     dependent: :destroy
   has_many :participants, dependent: :destroy
-  has_many :reviewer_participants, -> { where(role: ['reviewer', 'organizer']) }, class_name: 'Participant'
+  has_many :reviewer_participants, -> { where(role: %w(reviewer organizer)) }, class_name: 'Participant'
   has_many :reviewer_events, through: :reviewer_participants, source: :event
   has_many :organizer_participants, -> { where(role: 'organizer') }, class_name: 'Participant'
   has_many :organizer_events, through: :organizer_participants, source: :event

@@ -8,6 +8,13 @@
           =link_to(reviewer_event_proposals_path, class: "btn btn-primary") do
             &laquo; Return to Proposals
 
+          - if proposal.previous_proposal?
+            =link_to(reviewer_event_proposal_path(event, proposal.previous_proposal), class: "btn btn-primary") do
+              Previous Proposal
+          - if proposal.next_proposal?
+            =link_to(reviewer_event_proposal_path(event, proposal.next_proposal), class: "btn btn-primary") do
+              Next Proposal
+
   .row
     .col-md-12
       %date#updated_subheader= proposal.created_in_words

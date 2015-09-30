@@ -30,8 +30,12 @@ gem 'simple_form', '3.1.0.rc1'
 
 gem 'zeroclipboard-rails'
 
+gem 'opbeat'
+
 group :production do
   gem 'rails_12factor'
+  gem 'unicorn'
+  gem 'exception_notification'
 end
 
 group :development do
@@ -41,7 +45,6 @@ group :development do
   gem 'foreman'
   gem 'launchy'
   gem 'pry'
-  gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rack-mini-profiler'
   gem 'haml-rails'
@@ -62,4 +65,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'timecop'
   gem 'spring'
+  gem 'pry-rails'
+  gem 'awesome_print'
 end

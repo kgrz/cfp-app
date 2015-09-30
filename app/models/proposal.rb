@@ -193,6 +193,30 @@ class Proposal < ActiveRecord::Base
     success
   end
 
+  def next_proposal?
+    next_proposals.count > 0
+  end
+
+  def next_proposals
+    Proposal.where('id > ?', id).order('id ASC')
+  end
+
+  def next_proposal
+    next_proposals.first
+  end
+
+  def previous_proposal?
+    previous_proposals.count > 0
+  end
+
+  def previous_proposals
+    Proposal.where('id < ?', id).order('id DESC')
+  end
+
+  def previous_proposal
+    previous_proposals.first
+  end
+
   private
 
   def save_tags
